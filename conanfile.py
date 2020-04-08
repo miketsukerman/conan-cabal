@@ -1,5 +1,6 @@
 from conans.model import Generator
-from conans import ConanFile
+from conans import ConanFile,tools
+import os
 
 class Proglet:
     def __init__(self, proglet_info):
@@ -24,7 +25,7 @@ class Proglet:
             "hs-source-dirs: {}".format(lib_info.source_dirs),
             "default-language: {}".format(lib_info.default_language)
         )
-        return lib_template        
+        return lib_template
 
     def content(self):
         template = (
@@ -41,11 +42,13 @@ class Proglet:
             "synopsis: {}\n".format(self.info.synopsis),
             "copyright: {}\n".format(self.info.copyright),
             "category: {}\n".format(self.info.category),
-            "\n".join( "%s" % exec_content(exec) for exec in self.info.executables), 
-            "\n".join( "%s" % lib_content(lib) for lib in self.info.libraries)
+            "\n".join("%s" % exec_content(exec)
+                      for exec in self.info.executables),
+            "\n".join("%s" % lib_content(lib) for lib in self.info.libraries)
         )
 
         return template
+
 
 class Setup:
     def __init__(self, setup_info):
@@ -53,9 +56,10 @@ class Setup:
 
     def content():
         return """
-            import Distribution.Simple 
+            import Distribution.Simple
             main = defaultMain
             """
+
 
 class Cabal(Generator):
 
@@ -70,9 +74,35 @@ class Cabal(Generator):
     def filename(self):
         pass
 
+
 class CabalPackage(ConanFile):
-     name = "Cabal"
-     version = "0.1"
-     url = "https://github.com/miketsukerman/conan-cabal"
-     license = "MIT"
-     description = "Haskell build system"
+    name = "Cabal"
+    version = "3.2.0.0"
+    requires = "ghc/8.8.3"
+    url = "https://github.com/miketsukerman/conan-cabal"
+    license = "MPL-2.0"
+    description = "Haskell build system"
+    topics = ("ghc", "cabal", "haskell")
+    settings = "os", "compiler", "build_type", "arch"
+    generators = "virtualrunenv"
+
+    def source(self):
+        if self.settings.os == "Linux":
+            url = "https://downloads.haskell.org/~cabal/Cabal-{}/Cabal-{}.tar.gz".format(
+                self.version, self.version)
+        else:
+            raise Exception("Cabal {} does not exist for these settings".format(self.version))
+        tools.get(url, md5='192046d05a54bed13c4832fcf3da493d')
+
+    def build(self):
+        os.chdir("Cabal-{}".format(self.version))
+        self.run("ghc -threaded --make Setup")
+        self.run(".{}Setup configure --user".format(os.sep))
+        self.run(".{}Setup build".format(os.sep))
+        self.run(".{}Setup install".format(os.sep))
+
+    def package(self):
+        self.copy("*.dll", dst="bin", keep_path=False)
+        self.copy("*.so", dst="lib", keep_path=False)
+        self.copy("*.dylib", dst="lib", keep_path=False)
+        self.copy("*.a", dst="lib", keep_path=False)
