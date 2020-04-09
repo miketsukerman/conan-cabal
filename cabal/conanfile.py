@@ -76,9 +76,9 @@ class Cabal(Generator):
 
 
 class CabalPackage(ConanFile):
-    name = "Cabal"
+    name = "cabal"
     version = "3.2.0.0"
-    requires = "ghc/8.8.3"
+    requires = "ghc/8.8.2"
     url = "https://github.com/miketsukerman/conan-cabal"
     license = "MPL-2.0"
     description = "Haskell build system"
@@ -95,11 +95,11 @@ class CabalPackage(ConanFile):
         tools.get(url, md5='192046d05a54bed13c4832fcf3da493d')
 
     def build(self):
-        os.chdir("Cabal-{}".format(self.version))
-        self.run("ghc -threaded --make Setup")
-        self.run(".{}Setup configure --user".format(os.sep))
-        self.run(".{}Setup build".format(os.sep))
-        self.run(".{}Setup install".format(os.sep))
+        folder = "Cabal-{}".format(self.version)
+        self.run("ghc -threaded --make Setup", run_environment=True, cwd=folder)
+        self.run(".{}Setup configure --user --prefix={}".format(os.sep,self.package_folder), run_environment=True, cwd=folder)
+        self.run(".{}Setup build".format(os.sep), run_environment=True, cwd=folder)
+        self.run(".{}Setup install".format(os.sep), run_environment=True, cwd=folder)
 
     def package(self):
         self.copy("*.dll", dst="bin", keep_path=False)
