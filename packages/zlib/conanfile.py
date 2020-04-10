@@ -6,7 +6,7 @@ import os
 class ZlibPackage(ConanFile):
     name = "zlib"
     version = "0.6.2.1"
-    requires = "ghc/8.10.1"
+    requires = "ghc/8.10.1@haskell/testing"
     url = "https://github.com/miketsukerman/conan-cabal"
     license = "MIT"
     description = "Compression and decompression in the gzip and zlib formats"

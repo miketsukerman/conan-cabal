@@ -6,7 +6,7 @@ import os
 class TarPackage(ConanFile):
     name = "tar"
     version = "0.6.0.0"
-    requires = "ghc/8.8.2", "cabal/3.2.0.0"
+    requires = "ghc/8.10.1@haskell/testing"
     url = "https://github.com/miketsukerman/conan-cabal"
     license = "MIT"
     description = "Reading, writing and manipulating tar archive files"

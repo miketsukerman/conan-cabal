@@ -6,7 +6,7 @@ import os
 class HashablePackage(ConanFile):
     name = "hashable"
     version = "1.3.0.0"
-    requires = "ghc/8.10.1"
+    requires = "ghc/8.10.1@haskell/testing"
     url = "https://github.com/miketsukerman/conan-cabal"
     license = "MIT"
     description = "This package defines a class, Hashable, for types that can be converted to a hash value"

@@ -6,7 +6,7 @@ import os
 class IntegerLogarithmsPackage(ConanFile):
     name = "integer-logarithms"
     version = "1.0.3"
-    requires = "ghc/8.10.1"
+    requires = "ghc/8.10.1@haskell/testing"
     url = "integer-logarithmss://github.com/miketsukerman/conan-cabal"
     license = "MIT"
     description = "Integer logarithms, originally split from arithmoi package"

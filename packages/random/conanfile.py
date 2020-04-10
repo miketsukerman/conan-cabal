@@ -6,7 +6,7 @@ import os
 class RandomPackage(ConanFile):
     name = "random"
     version = "1.1"
-    requires = "ghc/8.8.2", "cabal/3.2.0.0"
+    requires = "ghc/8.10.1@haskell/testing"
     url = "https://github.com/miketsukerman/conan-cabal"
     license = "BSD-2"
     description = "a random number generation and sampling library for haskell"

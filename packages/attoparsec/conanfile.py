@@ -6,7 +6,7 @@ import os
 class AttoparsecPackage(ConanFile):
     name = "attoparsec"
     version = "0.13.2.4"
-    requires = "ghc/8.10.1"
+    requires = "ghc/8.10.1@haskell/testing"
     url = "https://github.com/miketsukerman/conan-cabal"
     license = "MIT"
     description = "Run IO operations attoparsechronously and wait for their results"

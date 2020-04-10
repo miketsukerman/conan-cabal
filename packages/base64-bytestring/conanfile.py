@@ -6,7 +6,7 @@ import os
 class Base64ByteStringPackage(ConanFile):
     name = "byte64-bytestring"
     version = "1.0.0.3"
-    requires = "ghc/8.8.2", "cabal/3.2.0.0"
+    requires = "ghc/8.10.1@haskell/testing"
     url = "https://github.com/miketsukerman/conan-cabal"
     license = "BSD3"
     description = "This package provides a Haskell library for working with base64-encoded data quickly and efficiently, using the ByteString type."

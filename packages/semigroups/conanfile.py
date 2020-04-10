@@ -6,13 +6,13 @@ import os
 class SemigroupsPackage(ConanFile):
     name = "semigroups"
     version = "0.19.1"
-    requires = "ghc/8.10.1"
+    build_requires = "ghc/8.10.1@haskell/testing"
     url = "https://github.com/miketsukerman/conan-cabal"
     license = "BSD3"
     description = "Semigroup is an algebraic structure consisting of a set together with an associative binary operation"
     topics = ("ghc", "cabal", "haskell", "semigroups")
     settings = "os", "compiler", "build_type", "arch"
-    build_requires = "ghc/8.10.1"
+    build_requires = "ghc/8.10.1@haskell/testing"
     generators = "virtualrunenv"
     scm = {
          "type": "git",

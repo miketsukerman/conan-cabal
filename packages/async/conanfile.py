@@ -6,7 +6,7 @@ import os
 class AsyncPackage(ConanFile):
     name = "async"
     version = "2.2.2"
-    requires = "ghc/8.10.1"
+    requires = "ghc/8.10.1@haskell/testing"
     url = "https://github.com/miketsukerman/conan-cabal"
     license = "MIT"
     description = "Run IO operations asynchronously and wait for their results"

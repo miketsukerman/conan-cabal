@@ -1,12 +1,13 @@
 from conans.model import Generator
-from conans import ConanFile,tools, AutoToolsBuildEnvironment
+from conans import ConanFile,tools
 import os
 
 
 class ScientificPackage(ConanFile):
+    python_requires("ghc-build-helper/0.1@haskell/testing")
     name = "scientific"
     version = "0.3.6.0"
-    requires = "ghc/8.10.1"
+    requires = "ghc/8.10.1@haskell/testing"
     url = "https://github.com/miketsukerman/conan-cabal"
     license = "BSD3"
     description = "Arbitrary-precision floating-point numbers represented using scientific notation"

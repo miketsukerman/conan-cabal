@@ -5,7 +5,7 @@ import os
 class CabalInstallPackage(ConanFile):
     name = "cabal-install"
     version = "3.2.0.0"
-    requires = "ghc/8.10.1", "cabal/3.2.0.0", "base16-bytestring/0.1.1.6"
+    requires = "ghc/8.10.1@haskell/testing", "base16-bytestring/0.1.1.6"
     url = "https://github.com/miketsukerman/conan-cabal"
     license = "MPL-2.0"
     description = "Haskell build system"

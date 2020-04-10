@@ -6,7 +6,7 @@ import os
 class NetworkURIPackage(ConanFile):
     name = "network-uri"
     version = "2.6.3.0"
-    requires = "ghc/8.8.2", "cabal/3.2.0.0"
+    requires = "ghc/8.10.1@haskell/testing"
     url = "https://github.com/miketsukerman/conan-cabal"
     license = "MIT"
     description = "This package provides facilities for parsing and unparsing URIs, and creating and resolving relative URI references, closely following the URI spec, IETF RFC 3986"
