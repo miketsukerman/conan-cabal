@@ -192,6 +192,7 @@ install:
   - sudo pip3 install conan_package_tools
   - conan user
   - conan remote add bintray-conan https://api.bintray.com/conan/bincrafters/public-conan
+  - conan remote add bintray-conan-personal https://api.bintray.com/conan/miketsukerman/fpp 
 
 before_script:
   - cd ${TRAVIS_BUILD_DIR}
@@ -200,5 +201,4 @@ script:
   - conan create ${CONAN_OPTS} --build=missing .
 
 after_success:
-  - conan remote add miketsukerman-bintray https://api.bintray.com/conan/miketsukerman/fpp 
   - conan upload "bnfc" -`r miketsukerman-bintray --all -c
