@@ -6,7 +6,7 @@ import os
 class ResolvePackage(ConanFile):
     name = "resolve"
     version = "0.2.0.1"
-    requires = "ghc/8.8.2", "cabal/3.2.0.0"
+    requires = "ghc/8.10.1"
     url = "https://github.com/miketsukerman/conan-cabal"
     license = "GPL3"
     description = "Reading, writing and manipulating resolve archive files"

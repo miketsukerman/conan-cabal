@@ -78,7 +78,7 @@ class Cabal(Generator):
 class CabalPackage(ConanFile):
     name = "cabal"
     version = "3.2.0.0"
-    requires = "ghc/8.8.2"
+    requires = "ghc/8.10.1"
     url = "https://github.com/miketsukerman/conan-cabal"
     license = "MPL-2.0"
     description = "Haskell build system"

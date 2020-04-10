@@ -1,18 +1,204 @@
-language: python
-python:
-  - "2.7"
-  - "3.4"
-  - "3.5"
-  - "3.6"      # current default Python on Travis CI
-  - "3.7"
-  - "3.8"
-  - "3.8-dev"  # 3.8 development branch
-  - "nightly"  # nightly build
+env:
+   global:
+     - CONAN_REFERENCE: "bnfc/2.8.3"
+     - CONAN_USERNAME: "miketsukerman"
+     - CONAN_LOGIN_USERNAME: "miketsukerman"
+     - CONAN_CHANNEL: "testing"
+     - CONAN_UPLOAD: "https://api.bintray.com/conan/miketsukerman/fpp"
 
-# command to install dependencies
+language: cpp
+jobs:
+  include:
+  - os: linux
+    dist: xenial
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        packages:
+        - g++-4.8
+    env:
+    - MATRIX_EVAL="CC=gcc-4.8 CXX=g++-4.8"
+  - os: linux
+    dist: xenial
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        packages:
+        - g++-4.9
+    env:
+    - MATRIX_EVAL="CC=gcc-4.9 CXX=g++-4.9"
+  - os: linux
+    dist: xenial
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        packages:
+        - g++-5
+    env:
+    - MATRIX_EVAL="CC=gcc-5 CXX=g++-5"
+  - os: linux
+    dist: xenial
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        packages:
+        - g++-6
+    env:
+    - MATRIX_EVAL="CC=gcc-6 CXX=g++-6"
+  - os: linux
+    dist: xenial
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        packages:
+        - g++-7
+    env:
+    - MATRIX_EVAL="CC=gcc-7 CXX=g++-7"
+  - os: linux
+    dist: bionic
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        packages:
+        - g++-8
+    env:
+    - MATRIX_EVAL="CC=gcc-8 CXX=g++-8"
+  - os: linux
+    dist: bionic
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        packages:
+        - g++-9
+    env:
+    - MATRIX_EVAL="CC=gcc-9 CXX=g++-9"
+  - os: linux
+    dist: xenial
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        - sourceline: deb https://apt.llvm.org/xenial/ llvm-toolchain-xenial-3.8 main
+          key_url: https://apt.llvm.org/llvm-snapshot.gpg.key
+        packages:
+        - clang-3.8
+    env:
+    - MATRIX_EVAL="CC=clang-3.8 CXX=clang++-3.8"
+  - os: linux
+    dist: xenial
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        - sourceline: deb https://apt.llvm.org/xenial/ llvm-toolchain-xenial-3.9 main
+          key_url: https://apt.llvm.org/llvm-snapshot.gpg.key
+        packages:
+        - clang-3.9
+    env:
+    - MATRIX_EVAL="CC=clang-3.9 CXX=clang++-3.9"
+  - os: linux
+    dist: xenial
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        - sourceline: deb https://apt.llvm.org/xenial/ llvm-toolchain-xenial-4.0 main
+          key_url: https://apt.llvm.org/llvm-snapshot.gpg.key
+        packages:
+        - clang-4.0
+    env:
+    - MATRIX_EVAL="CC=clang-4.0 CXX=clang++-4.0"
+  - os: linux
+    dist: xenial
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        - sourceline: deb https://apt.llvm.org/xenial/ llvm-toolchain-xenial-5.0 main
+          key_url: https://apt.llvm.org/llvm-snapshot.gpg.key
+        packages:
+        - clang-5.0
+    env:
+    - MATRIX_EVAL="CC=clang-5.0 CXX=clang++-5.0"
+  - os: linux
+    dist: xenial
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        - sourceline: deb https://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main
+          key_url: https://apt.llvm.org/llvm-snapshot.gpg.key
+        packages:
+        - clang-6.0
+    env:
+    - MATRIX_EVAL="CC=clang-6.0 CXX=clang++-6.0"
+
+  - os: linux
+    dist: xenial
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        - sourceline: deb https://apt.llvm.org/xenial/ llvm-toolchain-xenial-7 main
+          key_url: https://apt.llvm.org/llvm-snapshot.gpg.key
+        packages:
+        - clang-7
+    env:
+    - MATRIX_EVAL="CC=clang-7 CXX=clang++-7"
+    - CONAN_OPTS="-s compiler.version=7.1"
+
+  - os: linux
+    dist: xenial
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        - sourceline: deb https://apt.llvm.org/xenial/ llvm-toolchain-xenial-8 main
+          key_url: https://apt.llvm.org/llvm-snapshot.gpg.key
+        packages:
+        - clang-8
+    env:
+    - MATRIX_EVAL="CC=clang-8 CXX=clang++-8"
+
+  - os: linux
+    dist: xenial
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        - sourceline: deb https://apt.llvm.org/xenial/ llvm-toolchain-xenial-9 main
+          key_url: https://apt.llvm.org/llvm-snapshot.gpg.key
+        packages:
+        - clang-9
+    env:
+    - MATRIX_EVAL="CC=clang-9 CXX=clang++-9"
+
+before_install:
+  - eval "${MATRIX_EVAL}"
+  - python3 --version
+
 install:
-  - pip install -r requirements.txt
+  - sudo apt-get -y install cabal-install git python3-pip python3-setuptools
+  - cabal update
+  - cabal install doctest alex happy
+  - sudo pip3 install conan
+  - sudo pip3 install conan_package_tools
+  - conan user
+  - conan remote add bintray-conan https://api.bintray.com/conan/bincrafters/public-conan
 
-# command to run tests
+before_script:
+  - cd ${TRAVIS_BUILD_DIR}
+
 script:
-  - pytest
+  - conan create ${CONAN_OPTS} --build=missing .
+
+after_success:
+  - conan remote add miketsukerman-bintray https://api.bintray.com/conan/miketsukerman/fpp 
+  - conan upload "bnfc" -`r miketsukerman-bintray --all -c

@@ -4,9 +4,9 @@ import os
 
 
 class Base16ByteStringPackage(ConanFile):
-    name = "bash16-bytestring"
+    name = "base16-bytestring"
     version = "0.1.1.6"
-    requires = "ghc/8.8.2", "cabal/3.2.0.0"
+    requires = "ghc/8.10.1", "cabal/3.2.0.0"
     url = "https://github.com/miketsukerman/conan-cabal"
     license = "BSD3"
     description = "This package provides a Haskell library for working with base16-encoded data quickly and efficiently, using the ByteString type."
@@ -15,7 +15,7 @@ class Base16ByteStringPackage(ConanFile):
     generators = "virtualrunenv"
     scm = {
          "type": "git",
-         "subfolder": "bash16-bytestring",
+         "subfolder": "base16-bytestring",
          "url": "https://github.com/haskell/base16-bytestring.git",
          "revision": "refs/tags/{}".format(version)
     }

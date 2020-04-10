@@ -5,8 +5,8 @@ import os
 
 class HttpPackage(ConanFile):
     name = "http"
-    version = "4000.3.14-r1"
-    requires = "ghc/8.8.2", "cabal/3.2.0.0", "network/3.1.1.1", "network-uri/2.6.3.0"
+    version = "4000.3.12"
+    requires = "ghc/8.6.1"
     url = "https://github.com/miketsukerman/conan-cabal"
     license = "MIT"
     description = "This is the Haskell HTTP and Browser module package"

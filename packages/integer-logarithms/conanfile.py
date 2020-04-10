@@ -1,23 +1,23 @@
 from conans.model import Generator
-from conans import ConanFile,tools, AutoToolsBuildEnvironment
+from conans import ConanFile,tools
 import os
 
 
-class HashablePackage(ConanFile):
-    name = "hashable"
-    version = "1.3.0.0"
+class IntegerLogarithmsPackage(ConanFile):
+    name = "integer-logarithms"
+    version = "1.0.3"
     requires = "ghc/8.10.1"
-    url = "https://github.com/miketsukerman/conan-cabal"
+    url = "integer-logarithmss://github.com/miketsukerman/conan-cabal"
     license = "MIT"
-    description = "This package defines a class, Hashable, for types that can be converted to a hash value"
-    topics = ("ghc", "cabal", "haskell", "hashable")
+    description = "Integer logarithms, originally split from arithmoi package"
+    topics = ("ghc", "cabal", "haskell", "integer-logarithms")
     settings = "os", "compiler", "build_type", "arch"
     generators = "virtualrunenv"
     scm = {
          "type": "git",
-         "subfolder": "hashable",
-         "url": "https://github.com/tibbe/hashable.git",
-         "revision": "b317a69cb8c4b97463151db4c6cc50b9d1aa4aa7"
+         "subfolder": "integer-logarithms",
+         "url": "https://github.com/Bodigrim/integer-logarithms.git",
+         "revision": "refs/tags/v{}".format(version)
     }
 
     def build(self):        

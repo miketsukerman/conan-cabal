@@ -3,21 +3,21 @@ from conans import ConanFile,tools, AutoToolsBuildEnvironment
 import os
 
 
-class HashablePackage(ConanFile):
-    name = "hashable"
-    version = "1.3.0.0"
+class ScientificPackage(ConanFile):
+    name = "scientific"
+    version = "0.3.6.0"
     requires = "ghc/8.10.1"
     url = "https://github.com/miketsukerman/conan-cabal"
-    license = "MIT"
-    description = "This package defines a class, Hashable, for types that can be converted to a hash value"
-    topics = ("ghc", "cabal", "haskell", "hashable")
+    license = "BSD3"
+    description = "Arbitrary-precision floating-point numbers represented using scientific notation"
+    topics = ("ghc", "cabal", "haskell", "scientific")
     settings = "os", "compiler", "build_type", "arch"
     generators = "virtualrunenv"
     scm = {
          "type": "git",
-         "subfolder": "hashable",
-         "url": "https://github.com/tibbe/hashable.git",
-         "revision": "b317a69cb8c4b97463151db4c6cc50b9d1aa4aa7"
+         "subfolder": "scientific",
+         "url": "https://github.com/basvandijk/scientific.git",
+         "revision": "master"
     }
 
     def build(self):        

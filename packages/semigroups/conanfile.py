@@ -1,23 +1,24 @@
 from conans.model import Generator
-from conans import ConanFile,tools, AutoToolsBuildEnvironment
+from conans import ConanFile,tools
 import os
 
 
-class HashablePackage(ConanFile):
-    name = "hashable"
-    version = "1.3.0.0"
+class SemigroupsPackage(ConanFile):
+    name = "semigroups"
+    version = "0.19.1"
     requires = "ghc/8.10.1"
     url = "https://github.com/miketsukerman/conan-cabal"
-    license = "MIT"
-    description = "This package defines a class, Hashable, for types that can be converted to a hash value"
-    topics = ("ghc", "cabal", "haskell", "hashable")
+    license = "BSD3"
+    description = "Semigroup is an algebraic structure consisting of a set together with an associative binary operation"
+    topics = ("ghc", "cabal", "haskell", "semigroups")
     settings = "os", "compiler", "build_type", "arch"
+    build_requires = "ghc/8.10.1"
     generators = "virtualrunenv"
     scm = {
          "type": "git",
-         "subfolder": "hashable",
-         "url": "https://github.com/tibbe/hashable.git",
-         "revision": "b317a69cb8c4b97463151db4c6cc50b9d1aa4aa7"
+         "subfolder": "semigroups",
+         "url": "https://github.com/ekmett/semigroups.git",
+         "revision": "refs/tags/v{}".format(version)
     }
 
     def build(self):        
