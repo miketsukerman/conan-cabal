@@ -198,7 +198,7 @@ before_script:
   - cd ${TRAVIS_BUILD_DIR}
 
 script:
-  - conan create ${CONAN_OPTS} --build=missing .
+  - python3 build.py
 
 after_success:
   - conan upload "bnfc" -`r miketsukerman-bintray --all -c

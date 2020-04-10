@@ -19,7 +19,7 @@ packages = ["semigroups"
 
 def main(conan_path):
     for package in packages:
-        run("conan create packages/{} {}".format(package, conan_path))
+        run("conan create packages/{} {} --build missing".format(package, conan_path))
     
 if __name__ == '__main__':
     main("haskell/testing") 
