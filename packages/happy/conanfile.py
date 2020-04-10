@@ -3,21 +3,21 @@ from conans import ConanFile,tools, AutoToolsBuildEnvironment
 import os
 
 
-class AlexPackage(ConanFile):
-    name = "alex"
-    version = "3.2.5"
+class HappyPackage(ConanFile):
+    name = "happy"
+    version = "1.19.12"
     build_requires = "ghc/8.10.1@haskell/testing"
     url = "https://github.com/miketsukerman/conan-cabal"
     license = "BSD3"
     description = "A lexical analyser generator for Haskell "
-    topics = ("ghc", "cabal", "haskell", "alex")
+    topics = ("ghc", "cabal", "haskell", "happy")
     settings = "os", "compiler", "build_type", "arch"
     generators = "virtualrunenv"
     scm = {
          "type": "git",
-         "subfolder": "alex",
-         "url": "https://github.com/simonmar/alex.git",
-         "revision": "refs/tags/{}".format(version)
+         "subfolder": "happy",
+         "url": "https://github.com/simonmar/happy.git",
+         "revision": "642156c3b67e4eab7b837aaad43df461c8fa76a5"
     }
 
     def build(self):        
